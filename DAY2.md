@@ -1,4 +1,4 @@
-# Creating a docker image using 
+![Screenshot from 2025-03-21 01-46-21](https://github.com/user-attachments/assets/a4ac72ec-bf25-439c-9250-c3aae01f188b)![Screenshot from 2025-03-21 01-46-21](https://github.com/user-attachments/assets/05c7c018-eb83-4185-80d3-f4f6183303c7)# Creating a docker image using 
 ## Installing Docker
   - Enter the following commands to inatall and verify installation of Docker
 ```bash
@@ -17,7 +17,7 @@ docker
     - Docker Pipeline
     - docker-build-step
     - CoudBees Docker Build and Publish
-![2](https://github.com/user-attachments/assets/9ab4819d-33c1-49e0-abb8-5f748bbe4f83)
+![Screenshot from 2025-03-21 01-46-21](https://github.com/user-attachments/assets/84a487ae-ab0c-4d1a-a3fb-2a9991b066d1)
 ![3](https://github.com/user-attachments/assets/5f43b0b6-19de-46b6-b143-654bacfae677)
 ![4](https://github.com/user-attachments/assets/51261367-bda9-43a2-9584-a069acba2e70)
 
@@ -57,18 +57,18 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "niranjan1614/devops"          // Replace with your Docker Hub username and image name
+        IMAGE_NAME = "pranesh22/test"          // Replace with your Docker Hub username and image name
         TAG = "latest"
         CONTAINER_NAME = "my-container"
         PORT = "3001"
     }
 
     stages {
-        
+       
         stage('Clone Repository') {
             steps {
                 echo "Cloning GitHub repository..."
-                git 'https://github.com/NiranjanG2004/New_doc_task2.git'  // Replace with your repo URL
+                git branch:'main', url:'https://github.com/pranesh-22kk/docker_task2.git'  // Replace with your repo URL
             }
         }
 
@@ -82,8 +82,8 @@ pipeline {
 
                 stage('Login to Docker Hub') {
             steps {
-                echo "Logging into Docker Hub..." // Change the cedentialsID if you have docker credentials already added with another id other than docker-seccred
-                withCredentials([usernamePassword(credentialsId: 'docker-seccred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                echo "Logging into Docker Hub..."
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
                 }
             }
@@ -123,6 +123,7 @@ pipeline {
 
  - Go to `localhosy:3001`
    
-![Screenshot from 2025-03-20 18-07-49](https://github.com/user-attachments/assets/2aa9f622-7297-4c95-aa52-69554e814c8d)
+![Screenshot from 2025-03-20 00-48-06](https://github.com/user-attachments/assets/b0b24a12-c4ca-4fbe-a9c2-87254d92ff33)
+
 
 
