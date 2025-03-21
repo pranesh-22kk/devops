@@ -64,7 +64,7 @@ sudo systemctl start nginx
 
 # Verify Nginx is running
 systemctl status nginx
-```
+
 
 ![Screenshot from 2025-03-21 01-20-12](https://github.com/user-attachments/assets/c166fb8e-75a4-4ef3-abe9-bba91775a291)
 
